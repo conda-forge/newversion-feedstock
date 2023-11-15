@@ -1,6 +1,5 @@
 {% set name = "newversion" %}
-{% set version = "1.8.2" %}
-
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,24 +7,23 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/newversion-{{ version }}.tar.gz
-  sha256: 7cc493c901717c184cc67281d29c7d9842ef90ddb055590db8bff3aa39910a82
+  sha256: fe02fed950b683d6057fd359f9ba6ea31276e24579da4b730a8c9f47a8b910d9
 
 build:
-  number: 0
   noarch: python
   entry_points:
     - newversion = newversion.main:main_cli
   script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
-    - python >=3.6
-    - poetry
+    - python >=3.8,<4.0
+    - poetry-core >=1.0.0
     - pip
   run:
-    - python >=3.6
+    - python >=3.8.0,<4.0.0
     - packaging >=20.0
-    - typing-extensions >=3.7.4
 
 test:
   imports:
