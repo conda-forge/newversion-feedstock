@@ -1,13 +1,13 @@
 {% set name = "newversion" %}
-{% set version = "2.0.0" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/newversion-{{ version }}.tar.gz
-  sha256: fe02fed950b683d6057fd359f9ba6ea31276e24579da4b730a8c9f47a8b910d9
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/newversion-{{ version }}.tar.gz
+  sha256: a50cd0d63e413b9952b86c39abb28a1e2fc98d75ff9367f81b8800d0fbee117f
 
 build:
   noarch: python
@@ -18,12 +18,13 @@ build:
 
 requirements:
   host:
-    - python >=3.8,<4.0
+    - python {{ python_min }}
     - poetry-core >=1.0.0
     - pip
   run:
-    - python >=3.8.0,<4.0.0
+    - python >={{ python_min }}
     - packaging >=20.0
+    - typing_extensions >=4.1.0
 
 test:
   imports:
@@ -32,6 +33,7 @@ test:
     - pip check
     - newversion --help
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
