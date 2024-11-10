@@ -1,5 +1,5 @@
 {% set name = "newversion" %}
-{% set version = "3.0.0" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/newversion-{{ version }}.tar.gz
-  sha256: a50cd0d63e413b9952b86c39abb28a1e2fc98d75ff9367f81b8800d0fbee117f
+  sha256: c7ef57eb0d5a69a92bda13033c923b4f3d1b3782d08a5821ea0aecdf0c07ea3c
 
 build:
   noarch: python
